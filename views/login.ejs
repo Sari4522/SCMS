@@ -299,13 +299,7 @@
             return false;
         }
     </script>
-    <script>
-        // Check if the user is already logged in from another tab
-        if (<%= !!req.session.loggedIn %>) {
-            alert('You are already logged in from another tab.');
-        }
-    </script>
-    
+
     <script>
         // Load saved credentials when the page loads
         window.onload = function () {

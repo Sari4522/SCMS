@@ -3,25 +3,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const cookieParser = require('cookie-parser');
-const MongoDBStore = require('connect-mongodb-session')(session);
 
 const app = express();
 const port = 3000;
-// Use MongoDB session store
-const store = new MongoDBStore({
-    uri: 'mongodb+srv://saritha:Sari4522@cluster0.omlduk9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-    collection: 'sessions'
-});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser()); 
-app.use(session({
-    secret: 'your-secret-key',
-    resave: false,
-    saveUninitialized: false,
-    store: store
-}));
 
 mongoose.connect('mongodb+srv://saritha:Sari4522@cluster0.omlduk9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
@@ -68,7 +56,6 @@ app.post('/login', async (req, res) => {
 
     if (user) {
         if (password === user.password) {
-            req.session.loggedIn = true;
             // If Remember Me checkbox is checked, set cookies with username and password
             if (rememberMe === 'on') {
                 res.cookie('email', email, { maxAge: 900000, httpOnly: true }); // Set cookie for email with a 15-minute expiry
