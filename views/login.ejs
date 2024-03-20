@@ -1,155 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- Design by foolishdeveloper.com -->
+    <!-- Design by foolishdeveloper.com -->
     <title>SCMS</title>
- 
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="/public/webstyles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <!--Stylesheet-->
     <style media="screen">
-      *,
-*:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-body{
-    background-color: #080710;
-}
-.background{
-    width: 430px;
-    height: 520px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-}
-.background .shape{
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    border-radius: 50%;
-}
-.shape:first-child{
-    background: linear-gradient(
-        #1845ad,
-        #23a2f6
-    );
-    left: -80px;
-    top: -80px;
-}
-.shape:last-child{
-    background: linear-gradient(
-        to right,
-        #ff512f,
-        #f09819
-    );
-    right: -30px;
-    bottom: -80px;
-}
-form{
-    height: 520px;
-    width: 400px;
-    background-color: rgba(255,255,255,0.13);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
-}
-form *{
-    font-family: 'Poppins',sans-serif;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-    outline: none;
-    border: none;
-}
-form h3{
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 42px;
-    text-align: center;
-}
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
 
-label{
-    display: block;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 500;
-}
-input{
-    display: block;
-    height: 50px;
-    width: 100%;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 300;
-}
-::placeholder{
-    color: #e5e5e5;
-}
-button{
-    margin-top: 50px;
-    width: 100%;
-    background-color: #ffffff;
-    color: #080710;
-    padding: 15px 0;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.social{
-  margin-top: 30px;
-  display: flex;
-}
-.social div{
-  background: red;
-  width: 150px;
-  border-radius: 3px;
-  padding: 5px 10px 10px 5px;
-  background-color: rgba(255,255,255,0.27);
-  color: #eaf0fb;
-  text-align: center;
-}
-.social div:hover{
-  background-color: rgba(255,255,255,0.47);
-}
-.social .fb{
-  margin-left: 25px;
-}
-.social i{
-  margin-right: 4px;
-}
+        body {
+            background-color: #080710;
+        }
 
+        .background {
+            width: 430px;
+            height: 520px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+        }
+
+        .background .shape {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .shape:first-child {
+            background: linear-gradient(#1845ad,
+                    #23a2f6);
+            left: -80px;
+            top: -80px;
+        }
+
+        .shape:last-child {
+            background: linear-gradient(to right,
+                    #ff512f,
+                    #f09819);
+            right: -30px;
+            bottom: -80px;
+        }
+
+        form {
+            height: 620px;
+            width: 400px;
+            background-color: rgba(255, 255, 255, 0.13);
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+            padding: 50px 35px;
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Layout children vertically */
+            align-items: left;
+        }
+
+        form * {
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+        form h3 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+        }
+
+        label {
+            display: flex; /* Use flexbox for layout */
+            align-items: left; /* Center align items vertically */
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 20px; /* Adjust top margin */
+        }
+
+        input[type="checkbox"] {
+            transform: scale(0.6);
+            height: 40px;
+            width:40px;
+            margin-right: 5px;
+        }
+
+        input {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        ::placeholder {
+            color: #e5e5e5;
+        }
+
+        button {
+            margin-top: 50px;
+            width: 100%;
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .social {
+            margin-top: 30px;
+            display: flex;
+        }
+
+        .social div {
+            background: red;
+            width: 150px;
+            border-radius: 3px;
+            padding: 5px 10px 10px 5px;
+            background-color: rgba(255, 255, 255, 0.27);
+            color: #eaf0fb;
+            text-align: center;
+        }
+
+        .social div:hover {
+            background-color: rgba(255, 255, 255, 0.47);
+        }
+
+        .social .fb {
+            margin-left: 25px;
+        }
+
+        .social i {
+            margin-right: 4px;
+        }
     </style>
 </head>
+
 <body>
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form  action="/login" method="post">
+    <form id="loginForm" action="/login" method="post" onsubmit="return validateForm()">
         <h3>Login</h3>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username" name="userName">
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email" id="email" name="email" required>
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" name="password">
+        <input type="password" placeholder="Password" id="password" name="password" required>
+
+        <!-- Remember Me checkbox -->
+        <label for="rememberMe" class="d-flex flex-row align-items-center">
+            <input type="checkbox" id="rememberMe" onclick="handleRememberMe()">
+            <span style="font-size: 14px;">Remember Me</span>
+        </label>
+        <span id="usernameError" style="color: red; display: none;">Username already exists. Please try another.</span>
 
         <button type="submit">Log In</button>
-        <a href="/signup"><h4>Sign Up</h4></a>
+        <div class="d-flex flex-row justify-content-center">
+            <a href="/forgot-password">Forgot Password?</a>
+            <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+        </div>
     </form>
+    <script>
+        // Load saved credentials when the page loads
+        window.onload = function () {
+            loadSavedCredentials();
+        };
+
+        // Function to load saved credentials from localStorage
+        function loadSavedCredentials() {
+            var savedEmail = localStorage.getItem("email");
+            var savedPassword = localStorage.getItem("password");
+            var rememberMeCheckbox = document.getElementById("rememberMe");
+
+            if (savedEmail && savedPassword) {
+                document.getElementById("email").value = savedEmail;
+                document.getElementById("password").value = savedPassword;
+                rememberMeCheckbox.checked = true;
+            }
+        }
+
+        // Function to handle Remember Me checkbox
+        function handleRememberMe() {
+            var rememberMeCheckbox = document.getElementById("rememberMe");
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            if (rememberMeCheckbox.checked) {
+                localStorage.setItem("email", email);
+                localStorage.setItem("password", password);
+            } else {
+                localStorage.removeItem("email");
+                localStorage.removeItem("password");
+            }
+        }
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            if (!email.trim()) {
+                alert("Please enter an email");
+                return false;
+            }
+
+            if (!password.trim()) {
+                alert("Please enter a password");
+                return false;
+            }
+
+            // Handle Remember Me checkbox before submitting the form
+            handleRememberMe();
+
+            return true;
+        }
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+
+            // Password and Confirm Password match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match");
+                return false;
+            }
+
+            // Email format validation
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert("Invalid email format");
+                return false;
+            }
+
+            // Phone number format validation
+            var phonePattern = /^\d{10}$/; // Assumes 10-digit phone number
+            if (!phonePattern.test(phone)) {
+                alert("Phone number should consist of 10 digits");
+                return false;
+            }
+
+            return true; // Form submission allowed if all validations pass
+        }
+    </script>
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+
+            // Send an AJAX request to check if the username exists
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/checkUsername?username=" + username, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Success response
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.exists) {
+                            // Username exists, display error message
+                            document.getElementById("usernameError").style.display = "block";
+                        } else {
+                            // Username doesn't exist, proceed with form submission
+                            document.getElementById("usernameError").style.display = "none";
+                            document.getElementById("signupForm").submit();
+                        }
+                    } else {
+                        // Error response from the server
+                        console.error("Error checking username: " + xhr.status);
+                    }
+                }
+            };
+            xhr.send();
+
+            // Prevent form submission until username is validated
+            return false;
+        }
+    </script>
+    <script>
+        // Check if the user is already logged in from another tab
+        if (<%= !!req.session.loggedIn %>) {
+            alert('You are already logged in from another tab.');
+        }
+    </script>
+    
+    <script>
+        // Load saved credentials when the page loads
+        window.onload = function () {
+            loadSavedCredentials();
+        };
+
+        // Function to load saved credentials from localStorage
+        function loadSavedCredentials() {
+            var savedUsername = localStorage.getItem("username");
+            var savedPassword = localStorage.getItem("password");
+            var rememberMeCheckbox = document.getElementById("rememberMe");
+
+            if (savedUsername && savedPassword) {
+                document.getElementById("username").value = savedUsername;
+                document.getElementById("password").value = savedPassword;
+                rememberMeCheckbox.checked = true;
+            }
+        }
+
+        // Function to handle Remember Me checkbox
+        function handleRememberMe() {
+            var rememberMeCheckbox = document.getElementById("rememberMe");
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (rememberMeCheckbox.checked) {
+                localStorage.setItem("username", username);
+                localStorage.setItem("password", password);
+            } else {
+                localStorage.removeItem("username");
+                localStorage.removeItem("password");
+            }
+        }
+
+        // Form validation function
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (!username.trim()) {
+                alert("Please enter a username");
+                return false;
+            }
+
+            if (!password.trim()) {
+                alert("Please enter a password");
+                return false;
+            }
+
+            // Handle Remember Me checkbox before submitting the form
+            handleRememberMe();
+
+            return true;
+        }
+    </script>
 </body>
+
 </html>

@@ -21,7 +21,7 @@ body{
 }
 .background{
     width: 430px;
-    height: 520px;
+    height: 600px;
     position: absolute;
     transform: translate(-50%,-50%);
     left: 50%;
@@ -51,7 +51,7 @@ body{
     bottom: -80px;
 }
 form{
-    height: 520px;
+    height: 620px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -139,17 +139,102 @@ button{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form  action="/signup" method="post">
+    <form id="signupForm" action="/signup" method="post" onsubmit="return validateForm()">
         <h3>SignUp</h3>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username" name="userName">
+        <!-- <label for="username">Username</label>
+        <input type="text" placeholder="Email or Phone" id="username" name="userName" required> -->
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email" id="email" name="email" required>
+        <span id="usernameError" style="color: red; display: none;">Email already exists. Please try another.</span>
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" name="password">
+        <input type="password" placeholder="Password" id="password" name="password" required>
 
-        <button type="submit">Log In</button>
-        <a href="/signup"><h4>Sign Up</h4></a>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword" required>
+        
+
+        
+<!--     
+        <label for="phone">Phone Number</label>
+        <input type="tel" placeholder="Phone Number" id="phone" name="phone" required> -->
+
+        <button type="submit">Sign Up</button>
+        <p>Already have an account? <a href="/">Log In</a></p>
+
     </form>
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+
+            // Send an AJAX request to check if the username exists
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/checkUsername?username=" + username, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Success response
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.exists) {
+                            // Username exists, display error message
+                            document.getElementById("usernameError").style.display = "block";
+                        } else {
+                            // Username doesn't exist, proceed with form submission
+                            document.getElementById("usernameError").style.display = "none";
+                            document.getElementById("signupForm").submit();
+                        }
+                    } else {
+                        // Error response from the server
+                        console.error("Error checking username: " + xhr.status);
+                    }
+                }
+            };
+            xhr.send();
+
+            // Prevent form submission until username is validated
+            return false;
+        }
+    </script>
+     <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            
+            if (error === 'passwordMismatch') {
+                alert('Passwords do not match. Please try again.');
+            }
+        };
+    </script>
+    <script>
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+
+            // Password and Confirm Password match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match");
+                return false;
+            }
+
+            // Email format validation
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert("Invalid email format");
+                return false;
+            }
+
+            // Phone number format validation
+            var phonePattern = /^\d{10}$/; // Assumes 10-digit phone number
+            if (!phonePattern.test(phone)) {
+                alert("Phone number should consist of 10 digits");
+                return false;
+            }
+
+            return true; // Form submission allowed if all validations pass
+        }
+    </script>
 </body>
 </html>
